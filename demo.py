@@ -2,6 +2,10 @@ from __future__ import division, print_function, absolute_import
 import tflearn
 import speech_data
 import tensorflow as tf
+import os #something I +Amine+ added this line , not my idea though
+
+tf.logging.set_verbosity(tf.logging.ERROR)  #I + Amine + added this
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'  # and this one too
 
 learning_rate = 0.0001
 training_iters = 300000  # steps
@@ -24,9 +28,9 @@ net = tflearn.regression(net, optimizer='adam', learning_rate=learning_rate, los
 # Training
 
 ### add this "fix" for tensorflow version errors
-col = tf.get_collection(tf.GraphKeys.TRAINABLE_VARIABLES)
-for x in col:
-    tf.add_to_collection(tf.GraphKeys.VARIABLES, x ) 
+#col = tf.get_collection(tf.GraphKeys.TRAINABLE_VARIABLES)     #I +Amine+ removed this line by comment to avoid 'two variables have the same name' error
+#for x in col:                   # I +Amine+ removed this too
+ #   tf.add_to_collection(tf.GraphKeys.VARIABLES, x ) # And this one to m + Amine my doing
 
 
 model = tflearn.DNN(net, tensorboard_verbose=0)
