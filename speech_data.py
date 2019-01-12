@@ -73,7 +73,7 @@ def maybe_download(file, work_directory):
     os.mkdir(work_directory)
   filepath = os.path.join(work_directory, re.sub('.*\/','',file))
   if not os.path.exists(filepath):
-    if not file.startswith("http"): url_filename = SOURCE_URL + file
+    if not file.startswith("http"): url_filename = 'https://uc9d257899e77f9d60505eb48248.dl.dropboxusercontent.com/cd/0/get/AZIufubyYTmdVIDnmx53x7BUujkq5Eoa6fwmHheUvI2T7XjfxefKwaERb9OAzz5jp23YFDFM7J63nljHKjJ6WNTg66o0FBL7Q0vBdtfpWniNDJa5UEgX4RJzMUo2zMoLn-sjJSCgL0o6nA0BHwGN57Fd1TXK4yvjANwVN-ZTfvleaXIaNryVtj8oMDa93t4piCE/file?_download_id=5752416678409604285716697555078676121399417378922707350577108611&_notify_domain=www.dropbox.com&dl=1' #SOURCE_URL + file
     else: url_filename=file
     print('Downloading from %s to %s' % (url_filename, filepath))
     filepath, _ = urllib.request.urlretrieve(url_filename, filepath,progresshook)
